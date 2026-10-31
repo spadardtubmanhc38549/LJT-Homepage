@@ -28,3 +28,18 @@ jobs:
         run: bundle exec jekyll build
         env:
           JEKYLL_ENV: production
+      - name: Verify personal content and publication listings
+        run: |
+          grep -q "SynLogic: Synthesizing Verifiable Reasoning Data at Scale for Learning Logical Reasoning and Beyond" _site/index.html
+          grep -q "On the Perception Bottleneck of VLMs for Chart Understanding" _site/index.html
+          grep -q "On the Universal Truthfulness Hyperplane Inside LLMs" _site/index.html
+          grep -q "In-Context Sharpness as Alerts" _site/index.html
+          grep -q "C-Eval:" _site/index.html
+          grep -q "Composing Parameter-Efficient Modules with Arithmetic Operations" _site/index.html
+          grep -q "SynLogic: Synthesizing Verifiable Reasoning Data at Scale for Learning Logical Reasoning and Beyond" _site/publications/index.html
+          grep -q "Composing Parameter-Efficient Modules with Arithmetic Operations" _site/publications/index.html
+          grep -q "jliugi@connect.ust.hk" _site/index.html
+          grep -q "Vicent0205" _site/index.html
+          if grep -Eq "Paper Title Number|GitHub University|Your Name|Academic Pages is a ready" _site/index.html _site/publications/index.html; then
+            exit 1
+          fi
