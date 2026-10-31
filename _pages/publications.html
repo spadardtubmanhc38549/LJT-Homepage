@@ -12,8 +12,8 @@ You can also find my articles on <a href="{{ site.author.googlescholar }}">my Go
   {% for publication in ordered_publications %}
   <li>
     <strong>{{ publication.title }}</strong><br />
-    {{ publication.authors }}<br />
-    <em>{{ publication.venue }}</em>, {{ publication.year }}{% if publication.first_author %}. First author{% endif %}.
+    {{ publication.authors | replace: "Junteng Liu", "<strong>Junteng Liu</strong>" }}<br />
+    <em>{{ publication.venue }}</em>{% if publication.venue == "arXiv" %}, {{ publication.year }}{% endif %}{% if publication.first_author %}. First author{% endif %}.
   </li>
   {% endfor %}
 </ul>
